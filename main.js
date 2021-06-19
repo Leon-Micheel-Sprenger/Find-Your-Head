@@ -1,4 +1,5 @@
 const prompt = require('prompt-sync')({sigint: true});
+const term = require ( 'terminal-kit' ).terminal;
 
 const hat = '^';
 const hole = 'O';
@@ -17,7 +18,7 @@ class Field {
 
     print(){
         //put * where index is 
-        this.field[this.indexPosY][this.indexPosX] = pathCharacter;
+        this.field[this.indexPosY][this.indexPosX] =  pathCharacter;
     
         //print the field
         for (let i=0; i<this.field.length; i++){

@@ -105,7 +105,7 @@ function testField(x, y, field){
     }
     //move on hat
     else if (field[y][x] === hat){
-        console.log('Congratulations, you got your head!');
+        console.log('Congratulations, you got your hat!');
         return false;
     }
     else {

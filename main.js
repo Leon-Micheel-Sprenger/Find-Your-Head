@@ -8,9 +8,6 @@ const pathCharacter = '*';
 
 
 
-
-//Class
-
 class Field {
     constructor(field){
         this.field = field;
@@ -19,7 +16,7 @@ class Field {
     }
 
     print(){
-        //put * where index is
+        //put * where index is 
         this.field[this.indexPosY][this.indexPosX] = pathCharacter;
     
         //print the field
@@ -52,7 +49,6 @@ class Field {
     }
 
 
-//generate a new random field
     static generateField(x,y,percentageOfHoles){
 
         let fieldArr = [];
@@ -60,6 +56,8 @@ class Field {
         let reqNumOfHoles = percentageOfHoles * (x*y);
         let numOfHoles = 0;
 
+
+        //generate empty field array
         for (let i=0; i<y; i++){
             fieldArr[i] = [];
             for (let j=0; j<x; j++){
@@ -67,9 +65,7 @@ class Field {
             }
         }
 
-    
-
-        //generate reqNumOfHoles different numbers betwen 0 and x/y;
+        //generate reqNumOfHoles different numbers betwen 0 and x/y and place them at these indices in the fieldArr
         for (let h=0; h<reqNumOfHoles; h++){
 
                 let numX = Math.floor(Math.random()*x);
@@ -81,7 +77,6 @@ class Field {
             
         }
 
-
         //put hat in random place: 
         let hatNumX = Math.floor(Math.random()*x);
         let hatNumY = Math.floor(Math.random()*y);
@@ -90,14 +85,12 @@ class Field {
 
         //return fieldArr
         return fieldArr;
-
     }
-
 
 }
 
 
-function endGame(x, y, field){
+function testField(x, y, field){
 
     //move outside of the field
     if (y > field.length-1 || y < 0 || x > field[0].length-1 || x < 0){
@@ -129,12 +122,15 @@ const fieldArr= Field.generateField(10,10,0.2);
 const newField = new Field(fieldArr);
 
 
-
+console.clear();
 //loop to play:
-while(endGame(newField.indexPosX, newField.indexPosY, newField.field) === true){
+while(testField(newField.indexPosX, newField.indexPosY, newField.field) === true){
+    
     newField.print();
-    const letter = prompt('Which direction? ');
+    const letter = prompt('Which direction? (d - down, u - up, r - right, l - left)  ');
     newField.move(letter);
+    console.clear();
+
 } 
 
 
